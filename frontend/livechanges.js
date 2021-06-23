@@ -232,11 +232,11 @@ if (dbg) console.warn("Changeset to zoom on not found !");
  
 
     $("#currentChangeset").html("Changeset <a target='_blank' href=\"http://osm.org/browse/changeset/" + id + "\">" + id + "</a> by <a target='_blank' href=\"http://osm.org/user/" + user + "\">" + user + "</a> " + getFlagImgHtml(changeset));
-	$("#detail").html("<img style='padding: 2px; vertical-align:middle;' src='http://wiki.openstreetmap.org/w/images/b/b5/Mf_node.png' width=20 height=20> "
+	$("#detail").html("<img style='padding: 2px; vertical-align:middle;' src='i/node.png' width=20 height=20> "
 		+ cnode + " node"+pluriel(cnode)+" added, " + mnode + " modified, " + dnode+" deleted<br>"
-		+ "<img style='padding: 2px; vertical-align:middle;' src='http://wiki.openstreetmap.org/w/images/6/6a/Mf_way.png' width=20 height=20> "
+		+ "<img style='padding: 2px; vertical-align:middle;' src='i/way.png' width=20 height=20> "
 		+ cway + " way"+pluriel(cway)+" added, " + mway + " modified, " + dway +" deleted<br>"
-		+ "<img style='padding: 2px; vertical-align:middle;' src='http://wiki.openstreetmap.org/w/images/thumb/d/d9/Mf_Relation.svg/20px-Mf_Relation.svg.png' width=20 height=20> "
+		+ "<img style='padding: 2px; vertical-align:middle;' src='i/relation.png' width=20 height=20> "
 		+ crel + " relation"+pluriel(crel)+" added, " + mrel + " modified, " + drel +" deleted"
 	);
 
