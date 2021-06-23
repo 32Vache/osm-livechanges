@@ -617,7 +617,6 @@ formatter: function() {
             maxZoom: 14,
             attribution: '<a href="http://osm.org/">OpenStreetMap</a>',
             opacity: 1
-
         });
         var color = new L.TileLayer(
             'https://api.mapbox.com/styles/v1/whatismoss/cklwiopfh5e2z17qksl9cach6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2hhdGlzbW9zcyIsImEiOiJja3E5bmRxNmQwOG5lMnNxdGxuZjNzZmN2In0.qxu3gz1KX3QDze34c6lXLA', {
