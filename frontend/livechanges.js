@@ -609,35 +609,23 @@ formatter: function() {
     {
         var mapnik = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 14,
-            attribution: 'OpenStreetMap'
+            attribution: '<a href="http://osm.org/">OpenStreetMap</a>'
         });
-        var omq = new L.TileLayer(
-            'http://otile2.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
+        var color = new L.TileLayer(
+            'https://api.mapbox.com/styles/v1/whatismoss/cklwiopfh5e2z17qksl9cach6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2hhdGlzbW9zcyIsImEiOiJja3E5bmRxNmQwOG5lMnNxdGxuZjNzZmN2In0.qxu3gz1KX3QDze34c6lXLA', {
             maxZoom: 14,
-            attribution: '<a href="http://osm.org/">OpenStreetMap</a> and <a href="http://open.mapquest.com/">MapQuest</a>',
-            opacity: 0.5
+            attribution: '<a href="http://osm.org/">OpenStreetMap</a> and <a href="https://www.mapbox.com/">Mapbox</a>',
+            reuseTiles: true
         });
-        var nasa = new L.TileLayer(
-            'http://a.tiles.mapbox.com/v3/mapbox.blue-marble-topo-bathy-jul/{z}/{x}/{y}.png', {
-            detectRetina: true, reuseTiles: true,
-            maxZoom: 14,
-            attribution: '<a href="http://osm.org/">OpenStreetMap</a> and <a href="http://tiles.mapbox.com/mapbox/map/blue-marble-topo-bathy-jul">NASA Bluemarble@MapBox</a>',
-            opacity: 1
-        });
-        var world = new L.tileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.world-bank-borders-en/{z}/{x}/{y}.png', {
-            detectRetina: true, reuseTiles: true
-        });
-        var bluemarble = new L.layerGroup([nasa, world]);
-
         heatLayer = new L.TileLayer.HeatCanvas("Heatmap", map, {},
                     { 'step' : 0.2, 'degree' : L.TileLayer.HeatCanvas.QUAD, 'opacity': 0.4});
 
-        var control = new L.Control.Layers(  { "OpenMapQuest": omq, "Mapnik": mapnik , "NASA Blue Marble @ Mapbox" : bluemarble}, { "Heat Map" : heatLayer, "Markers" : markersGroup } );
+        var control = new L.Control.Layers(  { "Mapnik": mapnik , "Colorful Roads" : color}, { "Heat Map" : heatLayer, "Markers" : markersGroup } );
         map = new L.Map('map', {
             center: new L.LatLng(25, 0),
             zoom:3
         });
-        map.addLayer(omq);
+        map.addLayer(mapnik);
         map.addLayer(markersGroup);
         map.addControl(control)
     }
