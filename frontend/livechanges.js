@@ -607,9 +607,17 @@ formatter: function() {
 
     /* Initialize the top map */
     {
+        var osmfr = new L.TileLayer(
+            'http://tilecache.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+            maxZoom: 14,
+            attribution: '<a href="http://osm.org/">OpenStreetMap</a>',
+            opacity: 1
+        });
         var mapnik = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 14,
-            attribution: '<a href="http://osm.org/">OpenStreetMap</a>'
+            attribution: '<a href="http://osm.org/">OpenStreetMap</a>',
+            opacity: 1
+
         });
         var color = new L.TileLayer(
             'https://api.mapbox.com/styles/v1/whatismoss/cklwiopfh5e2z17qksl9cach6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2hhdGlzbW9zcyIsImEiOiJja3E5bmRxNmQwOG5lMnNxdGxuZjNzZmN2In0.qxu3gz1KX3QDze34c6lXLA', {
@@ -620,12 +628,12 @@ formatter: function() {
         heatLayer = new L.TileLayer.HeatCanvas("Heatmap", map, {},
                     { 'step' : 0.2, 'degree' : L.TileLayer.HeatCanvas.QUAD, 'opacity': 0.4});
 
-        var control = new L.Control.Layers(  { "Mapnik": mapnik , "Colorful Roads" : color}, { "Heat Map" : heatLayer, "Markers" : markersGroup } );
+        var control = new L.Control.Layers(  { "OSM-FR": osmfr , "Mapnik": mapnik , "Colorful Roads" : color}, { "Heat Map" : heatLayer, "Markers" : markersGroup } );
         map = new L.Map('map', {
             center: new L.LatLng(25, 0),
             zoom:3
         });
-        map.addLayer(mapnik);
+        map.addLayer(osmfr);
         map.addLayer(markersGroup);
         map.addControl(control)
     }
